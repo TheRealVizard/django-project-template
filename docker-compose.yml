@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:14.0
+    container_name: {{ project_name }}_postgres
+    volumes:
+      - ./data/postgres/:/var/lib/postgresql/data
+    env_file:
+      - .env.prod
+    ports:
+      - 5432:5432
+  web:
+    container_name: {{ project_name }}_django
+    build: .
+    command:
+      sh -c "python manage.py collectstatic --no-input --clear &&
+        python manage.py migrate &&
+        gunicorn --workers=4 --bind=0.0.0.0:8000 {{ project_name }}.wsgi:application"
+    volumes:
+        - .:/code
+        - static_volume:/code/{{ project_name }}/staticfiles/
+        - media_volume:/code/{{ project_name }}/mediafiles/
+    env_file:
+      - .env.prod
+    expose:
+      - 8000
+    depends_on:
+      - db
+    restart: always
+  nginx:
+    build: ./nginx
+    container_name: {{ project_name }}_nginx
+    ports:
+      - 80:80
+    volumes:
+      - static_volume:/code/{{ project_name }}/staticfiles/
+      - media_volume:/code/{{ project_name }}/media/
+    depends_on:
+      - web
+    restart: always
+volumes:
+  static_volume:
+  media_volume:

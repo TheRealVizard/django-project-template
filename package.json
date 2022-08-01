@@ -1,0 +1,45 @@
+{
+  "name": "{{ project_name }}",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "private",
+  "engines": {
+    "node": "15.x"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ]
+    },
+    "ignorePatterns": [
+      "bootstrap.bundle.min.js",
+      "jquery-3.6.0.min.js",
+      "select2.min.js"
+    ],
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "globals": {
+      "bootstrap": true,
+      "jQuery": true,
+      "$": true,
+      "django": "readonly",
+      "Chart": "readonly",
+      "L": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2022
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.5"
+  }
+}

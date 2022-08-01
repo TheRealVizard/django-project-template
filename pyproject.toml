@@ -1,0 +1,65 @@
+[tool.poetry]
+name = "django-project-template"
+version = "0.1.0"
+description = ""
+authors = [""]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.0.6"
+django-version-checks = "^1.7.0"
+django-filter = "^22.1"
+django-select2 = "^7.10.0"
+python-dotenv = "^0.20.0"
+python-dateutil = "^2.8.2"
+psycopg2-binary = "^2.9.3"
+gunicorn = {version = "^20.1.0", extras = ["production"]}
+
+[tool.poetry.dev-dependencies]
+flake8 = "^5.0.0"
+black = "^22.6.0"
+django-debug-toolbar = "^3.5.0"
+django-extensions = "^3.2.0"
+django-linear-migrations = "^2.5.1"
+coverage = "^6.4.2"
+ipython = "^8.4.0"
+pre-commit = "^2.20.0"
+factory-boy = "^3.2.1"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+pytest-django = "^4.5.2"
+pytest-randomly = "^3.12.0"
+pytest-restrict = "^4.4.0"
+pytest-xdist = "^2.5.0"
+pytest-env = "^0.6.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.extras]
+production = ["gunicorn^20.0.4",]
+
+[tool.black]
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = false
+ignore-magic = false
+ignore-semiprivate = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-module = true
+ignore-nested-functions = false
+ignore-nested-classes = true
+ignore-setters = false
+exclude = ["setup.py", "docs", "build", "*/migrations", ".ipynb_checkpoints"]
+ignore-regex = []
+verbose = 1
+quiet = false
+whitelist-regex = []
+color = true

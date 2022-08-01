@@ -1,0 +1,29 @@
+{% load static i18n l10n %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>
+      {% block title %}
+      {% endblock title %}
+    </title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="{% static 'external/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'external/css/all.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'externalcss//select2.min.css' %}"/>
+    {% block styles %}
+    {% endblock styles %}
+    <!-- Scripts -->
+    <script src="{% static 'external/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'external/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'external/js/select2.min.js' %}"></script>
+    {% block scripts %}
+    {% endblock scripts %}
+  </head>
+  <body>
+    {% block content %}
+    {% endblock content %}
+    {% block endloads %}
+    {% endblock endloads %}
+  </body>
+</html>
