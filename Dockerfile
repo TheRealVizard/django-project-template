@@ -10,13 +10,13 @@ RUN apt-get install -y gcc libpq-dev
 
 # Install requirements
 RUN pip install --upgrade pip
-RUN pip install poetry
+RUN pip install "poetry>=1.2.0a"
 
 ADD poetry.lock /code/
 ADD pyproject.toml /code/
 RUN poetry config virtualenvs.create false
 
-RUN /bin/sh -c 'poetry install --no-dev --no-interaction --no-root'
+RUN /bin/sh -c 'poetry install --no-dev --no-interaction --no-root --with production'
 
 COPY . /code/
 

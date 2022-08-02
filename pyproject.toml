@@ -13,7 +13,6 @@ django-select2 = "^7.10.0"
 python-dotenv = "^0.20.0"
 python-dateutil = "^2.8.2"
 psycopg2-binary = "^2.9.3"
-gunicorn = {version = "^20.1.0", extras = ["production"]}
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.0"
@@ -33,12 +32,12 @@ pytest-restrict = "^4.4.0"
 pytest-xdist = "^2.5.0"
 pytest-env = "^0.6.2"
 
+[tool.poetry.group.production.dependencies]
+gunicorn = "^20.1.0"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.extras]
-production = ["gunicorn^20.0.4",]
 
 [tool.black]
 target-version = ['py310']
